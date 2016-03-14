@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang = "es">
+<head>
+<link href="css/bootstrap.css" rel="stylesheet">
+		<link rel="stylesheet" href="css/jquery-ui.css">
+		<script src="js/jquery-1.11.3.js"></script>
+  		<script src="js/jquery-ui.js"></script>
+  		<script src="js/bootstrap.min.js"></script>
+  		
+  		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+    <title></title>
+    <style type="text/css">
+        .webcam {
+            width: 260px;
+            height: 196px;
+            position: relative;
+            border: 1px solid #d3d3d3;
+            float: left;
+            top: 2px;
+        }
+ 
+        .webcam video {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+        }
+ 
+        .webcam .photoArea {
+            border: 2px dashed red;
+            width: 140px;
+            height: 190px;
+            position: relative;
+            margin: 0 auto;
+            
+        }
+ 
+        canvas, img {
+            float: left;
+        }
+ 
+        .controls {
+            clear: both;
+        }
+        
+
+    </style>
+    
+</head>
+<body>
+    <div id="dialog" title="Pren foto" style="display:none;">
+    <div class="webcam">
+        <video autoplay id="video"></video>
+        <div class="photoArea"></div>
+        
+    </div>
+    </div>
+    <canvas id="canvas" width='140' height='190' hidden style="border: 1px solid #d3d3d3;"></canvas>
+    <img onclick="obrir_dialog()" id="foto" width="140" height="190" style="border: 2px solid gray; text-align: center; color:red;" value="Imatge" alt="Polsa per a prendre imatge"/>
+    
+    <div class="controls">
+        <input type="button" value="start capture" onclick="obrir_dialog()" />
+        <input type="button" value="take snapshot" onclick="FesFoto()" />
+        <input type="button" value="stop capture" onclick="stopCapture()" />
+        <input type="button" value="upload" onclick="upload()" />
+    </div>
+    <script type="text/javascript" src="js/webcam.js"></script>
+    <script type="text/javascript">
+    /*    var localMediaStream = null;
+        var video = document.querySelector('video');
+        var canvas = document.querySelector('canvas');
+ 
+        function upload() {
+            //var base64 = document.querySelector('img').src;
+            var base64 = canvas.toDataURL('image/jpeg');
+            $.ajax({
+            	  type: "POST",
+            	  url: "./php/b.php",
+            	  data: { 
+            	    base64: base64
+            	  }
+            	});
+            //PageMethods.Upload(base64,
+            		
+            
+        }
+ 
+        function takePhoto() {
+            if (localMediaStream) {
+                var ctx = canvas.getContext('2d');
+                //ctx.drawImage(video, 0, 0, 320, 240); // original draw image
+                //ctx.drawImage(video, 0, 0, 640, 480, 0, 0, 320, 240); // entire image
+ 
+                //instead of
+                //ctx.drawImage(video, 90, 40, 140, 190, 0, 0, 140, 190);
+ 
+                // we double the source coordinates
+                ctx.drawImage(video, 180, 80, 280, 380, 0, 0, 140, 190);
+                //document.querySelector('img').src = canvas.toDataURL('image/jpeg');
+                //var a = canvas.toDataURL('image/jpeg');
+            }
+        }
+ 
+        navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
+        window.URL = window.URL || window.webkitURL;
+ 
+        function startCapture() {
+            navigator.getUserMedia({ video: true }, function (stream) {
+                video.src = window.URL.createObjectURL(stream);
+                localMediaStream = stream;
+            }, function (e) {
+                console.log(e);
+            });
+        }
+ 
+        function stopCapture() {
+            video.pause();
+            localMediaStream.stop();
+        }
+        //$( document ).ready( startCapture);
+        function abrir_dialog() {
+        	startCapture();
+      	$( "#dialog" ).dialog({
+          modal: true,
+          buttons: {
+              "Fes foto": function() {
+            	  takePhoto();
+            	  stopCapture();
+                  //$( this ).dialog( "close" );
+              },
+              Cancel: function() {
+                  $( this ).dialog( "Tanca" );
+              },
+              Torna: function() {
+            	  startCapture();
+              }
+          }
+      	
+      	}
+      	
+      	);
+    }*/
+        
+        
+    </script>
+</body>
+</html>
